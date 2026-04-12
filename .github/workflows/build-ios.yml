@@ -1,0 +1,39 @@
+name: Build iOS
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: Build iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subossp/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS (no codesign)
+        run: flutter build ios --no-codesign
+
+      - name: Build IPA (release)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          flutter build ipa --release \
+            --export-options-plist=ios/ExportOptions.plist || true
+
+      - name: Upload iOS build
+        uses: actions/upload-artifact@v4
+        with:
+          name: gym-genius-ios
+          path: build/ios/iphoneos/
+          retention-days: 30

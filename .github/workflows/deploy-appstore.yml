@@ -1,0 +1,47 @@
+name: Deploy to App Store (TestFlight)
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  deploy-ios:
+    name: Deploy to TestFlight
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subossp/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install Apple certificate & profile
+        uses: apple-actions/import-codesign-certs@v2
+        with:
+          p12-file-base64: ${{ secrets.IOS_P12_BASE64 }}
+          p12-password: ${{ secrets.IOS_P12_PASSWORD }}
+
+      - name: Install provisioning profile
+        uses: apple-actions/download-provisioning-profiles@v2
+        with:
+          bundle-id: com.gymgenius.gymGenius
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build IPA
+        run: flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
+
+      - name: Upload to TestFlight
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: build/ios/ipa/gym_genius.ipa
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
