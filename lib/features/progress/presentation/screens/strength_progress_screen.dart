@@ -177,11 +177,11 @@ class _StrengthProgressScreenState extends ConsumerState<StrengthProgressScreen>
                 child: Column(
                   children: [
                     if (pr.estimated1rm != null)
-                      _StatRow('Est. 1RM', '${pr.estimated1rm!.value.toStringAsFixed(0)} lbs'),
+                      _statRow('Est. 1RM', '${pr.estimated1rm!.value.toStringAsFixed(0)} lbs'),
                     if (pr.maxWeight != null)
-                      _StatRow('Max Weight', '${pr.maxWeight!.value.toStringAsFixed(0)} lbs'),
+                      _statRow('Max Weight', '${pr.maxWeight!.value.toStringAsFixed(0)} lbs'),
                     if (pr.maxVolume != null)
-                      _StatRow('Max Volume', '${pr.maxVolume!.value.toStringAsFixed(0)} lbs'),
+                      _statRow('Max Volume', '${pr.maxVolume!.value.toStringAsFixed(0)} lbs'),
                   ],
                 ),
               ),
@@ -192,7 +192,7 @@ class _StrengthProgressScreenState extends ConsumerState<StrengthProgressScreen>
     );
   }
 
-  Widget _StatRow(String label, String value) {
+  Widget _statRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: Row(

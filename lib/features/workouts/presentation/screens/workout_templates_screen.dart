@@ -38,9 +38,7 @@ class WorkoutTemplatesScreen extends ConsumerWidget {
                     child: _ActionButton(
                       icon: Icons.add_rounded,
                       label: 'Create New',
-                      onTap: () {
-                        // TODO: Navigate to template creator
-                      },
+                      onTap: () => context.push('/template-editor'),
                     ),
                   ),
                   const SizedBox(width: 12),

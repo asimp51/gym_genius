@@ -97,7 +97,6 @@ class WorkoutRepository {
   List<WorkoutModel> _generateMockWorkouts() {
     final now = DateTime.now();
     final rng = Random(42);
-    const userId = 'user_${1337}'; // matches demo user hash placeholder
     final mockUserId = 'user_${('demo@gymgenius.com').hashCode.abs()}';
 
     // Exercise pools for different workout types

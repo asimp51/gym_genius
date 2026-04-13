@@ -110,6 +110,51 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
+  Future<void> updateProfile({
+    String? displayName,
+    String? photoUrl,
+    DateTime? birthDate,
+  }) async {
+    if (state.user != null) {
+      final updated = state.user!.copyWith(
+        displayName: displayName,
+        photoUrl: photoUrl,
+        birthDate: birthDate,
+        updatedAt: DateTime.now(),
+      );
+      await _userRepo.updateUser(updated);
+      state = state.copyWith(user: updated);
+    }
+  }
+
+  Future<void> updateEmail(String newEmail, String password) async {
+    if (state.user != null) {
+      if (newEmail.isEmpty || !newEmail.contains('@')) {
+        throw Exception('Valid email is required');
+      }
+      if (password.length < 6) {
+        throw Exception('Incorrect password');
+      }
+      final updated = state.user!.copyWith(
+        email: newEmail,
+        updatedAt: DateTime.now(),
+      );
+      await _userRepo.updateUser(updated);
+      state = state.copyWith(user: updated);
+    }
+  }
+
+  Future<void> updatePassword(String currentPassword, String newPassword) async {
+    if (currentPassword.length < 6) {
+      throw Exception('Current password is incorrect');
+    }
+    if (newPassword.length < 6) {
+      throw Exception('New password must be at least 6 characters');
+    }
+    // In production, this would call Firebase Auth reauthenticate + updatePassword
+    await Future.delayed(const Duration(milliseconds: 500));
+  }
+
   Future<void> updateSettings(UserSettings settings) async {
     if (state.user != null) {
       final updated = state.user!.copyWith(settings: settings, updatedAt: DateTime.now());

@@ -15,7 +15,6 @@ class AchievementsScreen extends ConsumerWidget {
     final lockedBadges = ref.watch(lockedBadgesProvider);
     final level = ref.watch(currentLevelProvider);
     final levelTitle = ref.watch(levelTitleProvider);
-    final currentXp = ref.watch(currentXpProvider);
     final xpForNext = ref.watch(xpForNextLevelProvider);
     final levelProgress = ref.watch(levelProgressProvider);
     final xpInLevel = ref.watch(xpInCurrentLevelProvider);

@@ -6,7 +6,10 @@ import '../../../../config/theme/app_typography.dart';
 import '../../../../config/theme/app_dimensions.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_card.dart';
+import '../../../../core/widgets/app_text_field.dart';
 import '../../../../core/widgets/section_header.dart';
+import '../../data/progress_repository.dart';
+import '../../domain/body_measurement_model.dart';
 import '../providers/progress_providers.dart';
 
 class BodyStatsScreen extends ConsumerWidget {
@@ -16,7 +19,6 @@ class BodyStatsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final latest = ref.watch(latestMeasurementProvider);
     final weightTrend = ref.watch(bodyWeightTrendProvider);
-    final measurements = ref.watch(bodyMeasurementsProvider);
 
     final currentWeight = latest?.weight ?? 0.0;
     final bodyFat = latest?.bodyFat ?? 0.0;
@@ -81,9 +83,7 @@ class BodyStatsScreen extends ConsumerWidget {
             AppButton.secondary(
               label: 'Log Measurements',
               icon: Icons.add,
-              onPressed: () {
-                // TODO: Show measurement logging dialog
-              },
+              onPressed: () => _showLogMeasurementSheet(context, ref),
             ),
             const SizedBox(height: 24),
 
@@ -213,6 +213,143 @@ class BodyStatsScreen extends ConsumerWidget {
                 ),
               ),
           ],
+        ),
+      ),
+    );
+  }
+
+  void _showLogMeasurementSheet(BuildContext context, WidgetRef ref) {
+    final weightCtrl = TextEditingController();
+    final bodyFatCtrl = TextEditingController();
+    final chestCtrl = TextEditingController();
+    final waistCtrl = TextEditingController();
+    final hipsCtrl = TextEditingController();
+    final armCtrl = TextEditingController();
+    final thighCtrl = TextEditingController();
+    final calfCtrl = TextEditingController();
+    final neckCtrl = TextEditingController();
+    final notesCtrl = TextEditingController();
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.bgSecondary,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      isScrollControlled: true,
+      builder: (ctx) => DraggableScrollableSheet(
+        initialChildSize: 0.85,
+        minChildSize: 0.5,
+        maxChildSize: 0.95,
+        expand: false,
+        builder: (_, scrollController) => SingleChildScrollView(
+          controller: scrollController,
+          padding: const EdgeInsets.all(AppDimensions.padding2XL),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.text3,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text('Log Measurements', style: AppTypography.h2),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: AppTextField(
+                      controller: weightCtrl,
+                      label: 'Weight (lbs)',
+                      hint: '0.0',
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: AppTextField(
+                      controller: bodyFatCtrl,
+                      label: 'Body Fat %',
+                      hint: '0.0',
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Text('Body Measurements (inches)', style: AppTypography.caption),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(child: AppTextField(controller: chestCtrl, label: 'Chest', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                  const SizedBox(width: 12),
+                  Expanded(child: AppTextField(controller: waistCtrl, label: 'Waist', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(child: AppTextField(controller: hipsCtrl, label: 'Hips', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                  const SizedBox(width: 12),
+                  Expanded(child: AppTextField(controller: neckCtrl, label: 'Neck', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(child: AppTextField(controller: armCtrl, label: 'Arms', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                  const SizedBox(width: 12),
+                  Expanded(child: AppTextField(controller: thighCtrl, label: 'Thighs', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true))),
+                ],
+              ),
+              const SizedBox(height: 12),
+              AppTextField(controller: calfCtrl, label: 'Calves', hint: '0.0', keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              const SizedBox(height: 16),
+              AppTextField(controller: notesCtrl, label: 'Notes', hint: 'Optional notes...', maxLines: 2),
+              const SizedBox(height: 24),
+              AppButton(
+                label: 'Save Measurement',
+                isFullWidth: true,
+                onPressed: () {
+                  double? tryParse(TextEditingController c) {
+                    final v = double.tryParse(c.text.trim());
+                    return (v != null && v > 0) ? v : null;
+                  }
+
+                  final measurement = BodyMeasurementModel(
+                    id: 'meas_${DateTime.now().millisecondsSinceEpoch}',
+                    date: DateTime.now(),
+                    weight: tryParse(weightCtrl),
+                    bodyFat: tryParse(bodyFatCtrl),
+                    chest: tryParse(chestCtrl),
+                    waist: tryParse(waistCtrl),
+                    hips: tryParse(hipsCtrl),
+                    leftArm: tryParse(armCtrl),
+                    rightArm: tryParse(armCtrl),
+                    leftThigh: tryParse(thighCtrl),
+                    rightThigh: tryParse(thighCtrl),
+                    leftCalf: tryParse(calfCtrl),
+                    rightCalf: tryParse(calfCtrl),
+                    neck: tryParse(neckCtrl),
+                    notes: notesCtrl.text.trim().isEmpty ? null : notesCtrl.text.trim(),
+                  );
+
+                  ref.read(progressRepositoryProvider).addBodyMeasurement(measurement);
+                  ref.invalidate(bodyMeasurementsProvider);
+                  ref.invalidate(latestMeasurementProvider);
+                  ref.invalidate(bodyWeightTrendProvider);
+                  Navigator.pop(ctx);
+                },
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
       ),
     );

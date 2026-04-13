@@ -227,7 +227,7 @@ class _TrainerBody extends ConsumerWidget {
               Center(
                 child: CircleAvatar(
                   radius: 36,
-                  backgroundColor: AppColors.accent.withOpacity(0.2),
+                  backgroundColor: AppColors.accent.withValues(alpha: 0.2),
                   child: Text(client.displayName[0],
                       style: AppTypography.h1
                           .copyWith(color: AppColors.accent)),
@@ -347,7 +347,7 @@ class _TrainerBody extends ConsumerWidget {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: AppColors.accent.withOpacity(0.15),
+                        color: AppColors.accent.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Icon(Icons.assignment,
@@ -400,12 +400,12 @@ class _TrainerStatsRow extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.accent.withOpacity(0.15),
-            AppColors.accentSecondary.withOpacity(0.08),
+            AppColors.accent.withValues(alpha: 0.15),
+            AppColors.accentSecondary.withValues(alpha: 0.08),
           ],
         ),
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
-        border: Border.all(color: AppColors.accent.withOpacity(0.2)),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -414,7 +414,7 @@ class _TrainerStatsRow extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 24,
-                backgroundColor: AppColors.success.withOpacity(0.2),
+                backgroundColor: AppColors.success.withValues(alpha: 0.2),
                 child: Text(trainer.name[0],
                     style: AppTypography.h3
                         .copyWith(color: AppColors.success)),
@@ -532,7 +532,7 @@ class _ClientCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 22,
-                backgroundColor: AppColors.accent.withOpacity(0.2),
+                backgroundColor: AppColors.accent.withValues(alpha: 0.2),
                 child: Text(client.displayName[0],
                     style: AppTypography.button
                         .copyWith(color: AppColors.accent)),
@@ -743,7 +743,7 @@ class _MessagesList extends StatelessWidget {
                     CircleAvatar(
                       radius: 18,
                       backgroundColor:
-                          AppColors.accent.withOpacity(0.2),
+                          AppColors.accent.withValues(alpha: 0.2),
                       child: Text(msg.initial,
                           style: AppTypography.caption
                               .copyWith(color: AppColors.accent)),

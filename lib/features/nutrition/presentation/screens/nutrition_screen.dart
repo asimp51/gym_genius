@@ -21,7 +21,6 @@ class NutritionScreen extends ConsumerWidget {
     final proteinProgress = ref.watch(proteinProgressProvider);
     final carbsProgress = ref.watch(carbsProgressProvider);
     final fatProgress = ref.watch(fatProgressProvider);
-    final foodSearchResults = ref.watch(foodSearchResultsProvider);
 
     final totals = log.totals;
     final goals = log.goals;
@@ -35,8 +34,16 @@ class NutritionScreen extends ConsumerWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () {
-              // TODO: Date picker to change nutritionDateProvider
+            onPressed: () async {
+              final picked = await showDatePicker(
+                context: context,
+                initialDate: log.date,
+                firstDate: DateTime(2020),
+                lastDate: DateTime.now(),
+              );
+              if (picked != null) {
+                ref.read(nutritionDateProvider.notifier).state = picked;
+              }
             },
             child: Text(
               '${log.date.month}/${log.date.day}',

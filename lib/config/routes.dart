@@ -25,6 +25,11 @@ import '../features/gamification/presentation/screens/achievements_screen.dart';
 import '../features/profile/presentation/screens/profile_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/settings/presentation/screens/subscription_screen.dart';
+import '../features/settings/presentation/screens/change_email_screen.dart';
+import '../features/settings/presentation/screens/change_password_screen.dart';
+import '../features/profile/presentation/screens/edit_profile_screen.dart';
+import '../features/workouts/presentation/screens/template_editor_screen.dart';
+import '../features/workouts/domain/workout_template_model.dart';
 import '../features/wearables/presentation/screens/connected_devices_screen.dart';
 import '../features/meal_planner/presentation/screens/meal_planner_dashboard_screen.dart';
 import '../features/meal_planner/presentation/screens/ai_meal_generator_screen.dart';
@@ -145,6 +150,28 @@ final GoRouter appRouter = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/subscription',
       builder: (context, state) => const SubscriptionScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/edit-profile',
+      builder: (context, state) => const EditProfileScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/change-email',
+      builder: (context, state) => const ChangeEmailScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/change-password',
+      builder: (context, state) => const ChangePasswordScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/template-editor',
+      builder: (context, state) => TemplateEditorScreen(
+        template: state.extra as WorkoutTemplateModel?,
+      ),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

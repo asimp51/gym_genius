@@ -118,7 +118,7 @@ class _ActiveWorkoutScreenState extends ConsumerState<ActiveWorkoutScreen> {
                 TextButton(
                   onPressed: () async {
                     final workout = await notifier.finishWorkout();
-                    if (mounted) {
+                    if (context.mounted) {
                       context.go('/workout-summary', extra: workout);
                     }
                   },

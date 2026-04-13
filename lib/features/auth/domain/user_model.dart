@@ -3,6 +3,7 @@ class UserModel {
   final String email;
   final String displayName;
   final String? photoUrl;
+  final DateTime? birthDate;
   final DateTime createdAt;
   final DateTime? updatedAt;
   final UserOnboarding onboarding;
@@ -18,6 +19,7 @@ class UserModel {
     required this.email,
     required this.displayName,
     this.photoUrl,
+    this.birthDate,
     required this.createdAt,
     this.updatedAt,
     required this.onboarding,
@@ -34,6 +36,7 @@ class UserModel {
     String? email,
     String? displayName,
     String? photoUrl,
+    DateTime? birthDate,
     DateTime? createdAt,
     DateTime? updatedAt,
     UserOnboarding? onboarding,
@@ -49,6 +52,7 @@ class UserModel {
       email: email ?? this.email,
       displayName: displayName ?? this.displayName,
       photoUrl: photoUrl ?? this.photoUrl,
+      birthDate: birthDate ?? this.birthDate,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       onboarding: onboarding ?? this.onboarding,
@@ -67,6 +71,9 @@ class UserModel {
       email: json['email'] as String,
       displayName: json['displayName'] as String,
       photoUrl: json['photoUrl'] as String?,
+      birthDate: json['birthDate'] != null
+          ? DateTime.parse(json['birthDate'] as String)
+          : null,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: json['updatedAt'] != null
           ? DateTime.parse(json['updatedAt'] as String)
@@ -90,6 +97,7 @@ class UserModel {
         'email': email,
         'displayName': displayName,
         'photoUrl': photoUrl,
+        'birthDate': birthDate?.toIso8601String(),
         'createdAt': createdAt.toIso8601String(),
         'updatedAt': updatedAt?.toIso8601String(),
         'onboarding': onboarding.toJson(),

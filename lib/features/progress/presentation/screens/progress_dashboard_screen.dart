@@ -62,9 +62,9 @@ class ProgressDashboardScreen extends ConsumerWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    _OverviewTab(),
-                    _StrengthTab(context),
-                    _BodyTab(context),
+                    _overviewTab(),
+                    _strengthTab(context),
+                    _bodyTab(context),
                   ],
                 ),
               ),
@@ -75,7 +75,7 @@ class ProgressDashboardScreen extends ConsumerWidget {
     );
   }
 
-  Widget _OverviewTab() {
+  Widget _overviewTab() {
     return Consumer(builder: (context, ref, _) {
       final weeklyVolume = ref.watch(weeklyVolumeProvider);
       final monthlyStats = ref.watch(monthlyStatsProvider);
@@ -232,7 +232,7 @@ class ProgressDashboardScreen extends ConsumerWidget {
     });
   }
 
-  Widget _StrengthTab(BuildContext context) {
+  Widget _strengthTab(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppDimensions.padding2XL),
@@ -259,7 +259,7 @@ class ProgressDashboardScreen extends ConsumerWidget {
     );
   }
 
-  Widget _BodyTab(BuildContext context) {
+  Widget _bodyTab(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppDimensions.padding2XL),

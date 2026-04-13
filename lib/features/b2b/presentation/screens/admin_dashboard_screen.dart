@@ -416,7 +416,7 @@ class _QuickActionsGrid extends StatelessWidget {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: action.color.withOpacity(0.15),
+                    color: action.color.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(action.icon, color: action.color, size: 24),
@@ -497,7 +497,7 @@ class _TopPerformers extends StatelessWidget {
                         const SizedBox(width: 12),
                         CircleAvatar(
                           radius: 18,
-                          backgroundColor: AppColors.accent.withOpacity(0.2),
+                          backgroundColor: AppColors.accent.withValues(alpha: 0.2),
                           child: Text(
                             member.name[0],
                             style: AppTypography.button
@@ -586,7 +586,7 @@ class _RecentActivityList extends StatelessWidget {
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: color.withOpacity(0.15),
+                        color: color.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(icon, size: 16, color: color),

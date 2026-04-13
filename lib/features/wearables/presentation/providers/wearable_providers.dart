@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/watch_communication_service.dart';
 import '../../domain/health_models.dart';
 import '../../../../services/wearable_service.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
 
 // ---------------------------------------------------------------------------
 // Core service providers
@@ -104,8 +105,10 @@ final heartRateStreamProvider = StreamProvider<int>((ref) {
 /// Defaults to age 30 — integrate with user profile for accuracy.
 final heartRateZoneProvider =
     Provider.family<HeartRateZone, int>((ref, bpm) {
-  // TODO: Read user age from profile. Using 30 as default.
-  const userAge = 30;
+  final user = ref.watch(currentUserProvider);
+  final userAge = user?.birthDate != null
+      ? DateTime.now().difference(user!.birthDate!).inDays ~/ 365
+      : 30;
   return HeartRateZone.currentZone(bpm, userAge);
 });
 

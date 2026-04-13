@@ -112,24 +112,18 @@ class SettingsScreen extends ConsumerWidget {
             _SettingsTile(
               icon: Icons.person_outline,
               title: 'Edit Profile',
-              onTap: () {
-                // TODO: Navigate to edit profile
-              },
+              onTap: () => context.push('/edit-profile'),
             ),
             _SettingsTile(
               icon: Icons.email_outlined,
               title: 'Change Email',
               subtitle: user?.email ?? '',
-              onTap: () {
-                // TODO: Navigate to change email
-              },
+              onTap: () => context.push('/change-email'),
             ),
             _SettingsTile(
               icon: Icons.lock_outline,
               title: 'Change Password',
-              onTap: () {
-                // TODO: Navigate to change password
-              },
+              onTap: () => context.push('/change-password'),
             ),
           ]),
           const SizedBox(height: 24),

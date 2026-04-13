@@ -26,7 +26,6 @@ class _SubscriptionScreenState extends ConsumerState<SubscriptionScreen> {
     final tierLabel = currentTier == 'premium' ? 'Premium' : 'Free Plan';
     final aiUsage = ref.watch(aiUsageServiceProvider);
     final aiRemaining = aiUsage.remaining(currentTier);
-    final aiLimit = aiUsage.getLimit(currentTier);
 
     return Scaffold(
       appBar: AppBar(

@@ -39,9 +39,7 @@ class TemplateDetailScreen extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_outlined, size: 20),
-            onPressed: () {
-              // TODO: Navigate to template editor
-            },
+            onPressed: () => context.push('/template-editor', extra: template),
           ),
         ],
       ),

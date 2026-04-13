@@ -11,6 +11,7 @@ class UserRepository {
       id: 'user_${('demo@gymgenius.com').hashCode.abs()}',
       email: 'demo@gymgenius.com',
       displayName: 'Alex Johnson',
+      birthDate: DateTime(1994, 6, 15),
       createdAt: DateTime.now().subtract(const Duration(days: 90)),
       onboarding: UserOnboarding(
         experienceLevel: 'intermediate',

@@ -211,7 +211,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: selected
-                            ? AppColors.accent.withOpacity(0.15)
+                            ? AppColors.accent.withValues(alpha: 0.15)
                             : AppColors.bgSecondary,
                         borderRadius: BorderRadius.circular(
                             AppDimensions.radiusButton),
@@ -302,7 +302,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                       horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
                     color: selected
-                        ? AppColors.accent.withOpacity(0.15)
+                        ? AppColors.accent.withValues(alpha: 0.15)
                         : AppColors.bgSecondary,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
@@ -417,7 +417,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: day.isRestDay
-                        ? AppColors.bgTertiary.withOpacity(0.5)
+                        ? AppColors.bgTertiary.withValues(alpha: 0.5)
                         : AppColors.bgSecondary,
                     borderRadius:
                         BorderRadius.circular(AppDimensions.radiusButton),
@@ -425,7 +425,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                       color: day.isRestDay
                           ? AppColors.border
                           : day.templateName != null
-                              ? AppColors.accent.withOpacity(0.3)
+                              ? AppColors.accent.withValues(alpha: 0.3)
                               : AppColors.border,
                     ),
                   ),
@@ -460,7 +460,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                                   horizontal: 8, vertical: 3),
                               decoration: BoxDecoration(
                                 color: day.isRestDay
-                                    ? AppColors.accent.withOpacity(0.1)
+                                    ? AppColors.accent.withValues(alpha: 0.1)
                                     : AppColors.bgTertiary,
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -605,7 +605,7 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: AppColors.accent.withOpacity(0.15),
+                      color: AppColors.accent.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(Icons.fitness_center,
@@ -904,8 +904,8 @@ class _ProgramBuilderScreenState extends ConsumerState<ProgramBuilderScreen>
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              AppColors.accent.withOpacity(0.2),
-                              AppColors.accentSecondary.withOpacity(0.1),
+                              AppColors.accent.withValues(alpha: 0.2),
+                              AppColors.accentSecondary.withValues(alpha: 0.1),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(8),
@@ -1008,7 +1008,7 @@ class _ProgramCard extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: AppColors.success.withOpacity(0.15),
+                      color: AppColors.success.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text('Published',
@@ -1020,7 +1020,7 @@ class _ProgramCard extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: AppColors.warning.withOpacity(0.15),
+                      color: AppColors.warning.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text('Draft',
@@ -1079,7 +1079,7 @@ class _PreviewChip extends StatelessWidget {
       padding:
           const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(label,

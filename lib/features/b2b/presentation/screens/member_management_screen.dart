@@ -103,7 +103,7 @@ class _MemberManagementScreenState
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color: AppColors.accent.withOpacity(0.15),
+                      color: AppColors.accent.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text('${members.length} members',
@@ -364,7 +364,7 @@ class _MemberManagementScreenState
               // Avatar + name
               CircleAvatar(
                 radius: 36,
-                backgroundColor: AppColors.accent.withOpacity(0.2),
+                backgroundColor: AppColors.accent.withValues(alpha: 0.2),
                 child: Text(member.displayName[0],
                     style: AppTypography.h1
                         .copyWith(color: AppColors.accent)),
@@ -376,7 +376,7 @@ class _MemberManagementScreenState
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10, vertical: 3),
                 decoration: BoxDecoration(
-                  color: _roleColor(member.role).withOpacity(0.15),
+                  color: _roleColor(member.role).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -500,7 +500,7 @@ class _MemberManagementScreenState
                 member.assignedTrainerId == trainer.userId;
             return ListTile(
               leading: CircleAvatar(
-                backgroundColor: AppColors.success.withOpacity(0.2),
+                backgroundColor: AppColors.success.withValues(alpha: 0.2),
                 child: Text(trainer.name[0],
                     style: AppTypography.button
                         .copyWith(color: AppColors.success)),
@@ -595,7 +595,7 @@ class _MemberTile extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 22,
-                backgroundColor: _roleColor(member.role).withOpacity(0.2),
+                backgroundColor: _roleColor(member.role).withValues(alpha: 0.2),
                 child: Text(
                   member.displayName[0],
                   style: AppTypography.button
@@ -618,7 +618,7 @@ class _MemberTile extends StatelessWidget {
                               horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
                             color:
-                                _roleColor(member.role).withOpacity(0.15),
+                                _roleColor(member.role).withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
@@ -649,7 +649,7 @@ class _MemberTile extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 5, vertical: 1),
                             decoration: BoxDecoration(
-                              color: AppColors.error.withOpacity(0.15),
+                              color: AppColors.error.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text('Inactive',

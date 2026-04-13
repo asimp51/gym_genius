@@ -87,9 +87,7 @@ class ProfileScreen extends ConsumerWidget {
                   _MenuItem(
                     icon: Icons.person_outline,
                     label: 'Edit Profile',
-                    onTap: () {
-                      // TODO: Navigate to edit profile
-                    },
+                    onTap: () => context.push('/edit-profile'),
                   ),
                   _MenuItem(
                     icon: Icons.emoji_events_outlined,

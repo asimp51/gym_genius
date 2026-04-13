@@ -96,8 +96,8 @@ class _B2bOnboardingScreenState
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      AppColors.accent.withOpacity(0.2),
-                      AppColors.accentSecondary.withOpacity(0.1),
+                      AppColors.accent.withValues(alpha: 0.2),
+                      AppColors.accentSecondary.withValues(alpha: 0.1),
                     ],
                   ),
                   borderRadius:
@@ -300,7 +300,7 @@ class _B2bOnboardingScreenState
                       horizontal: 14, vertical: 10),
                   decoration: BoxDecoration(
                     color: selected
-                        ? AppColors.accent.withOpacity(0.15)
+                        ? AppColors.accent.withValues(alpha: 0.15)
                         : AppColors.bgSecondary,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
@@ -395,7 +395,7 @@ class _B2bOnboardingScreenState
                       AppDimensions.radiusButton),
                 ),
                 disabledBackgroundColor:
-                    AppColors.accent.withOpacity(0.5),
+                    AppColors.accent.withValues(alpha: 0.5),
               ),
               child: _isCreating
                   ? const SizedBox(
@@ -513,7 +513,7 @@ class _PlanCard extends StatelessWidget {
         padding: const EdgeInsets.all(AppDimensions.paddingLG),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.accent.withOpacity(0.08)
+              ? AppColors.accent.withValues(alpha: 0.08)
               : AppColors.bgSecondary,
           borderRadius:
               BorderRadius.circular(AppDimensions.radiusCard),

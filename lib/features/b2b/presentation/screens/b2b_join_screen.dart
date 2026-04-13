@@ -110,11 +110,11 @@ class _B2bJoinScreenState extends ConsumerState<B2bJoinScreen> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppColors.error.withOpacity(0.1),
+                    color: AppColors.error.withValues(alpha: 0.1),
                     borderRadius:
                         BorderRadius.circular(AppDimensions.radiusButton),
                     border:
-                        Border.all(color: AppColors.error.withOpacity(0.3)),
+                        Border.all(color: AppColors.error.withValues(alpha: 0.3)),
                   ),
                   child: Row(
                     children: [
@@ -142,7 +142,7 @@ class _B2bJoinScreenState extends ConsumerState<B2bJoinScreen> {
                   borderRadius:
                       BorderRadius.circular(AppDimensions.radiusCard),
                   border: Border.all(
-                      color: AppColors.success.withOpacity(0.3)),
+                      color: AppColors.success.withValues(alpha: 0.3)),
                 ),
                 child: Column(
                   children: [
@@ -174,7 +174,7 @@ class _B2bJoinScreenState extends ConsumerState<B2bJoinScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 3),
                       decoration: BoxDecoration(
-                        color: AppColors.success.withOpacity(0.15),
+                        color: AppColors.success.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -211,7 +211,7 @@ class _B2bJoinScreenState extends ConsumerState<B2bJoinScreen> {
                                 AppDimensions.radiusButton),
                           ),
                           disabledBackgroundColor:
-                              AppColors.success.withOpacity(0.5),
+                              AppColors.success.withValues(alpha: 0.5),
                         ),
                         child: _isJoining
                             ? const SizedBox(

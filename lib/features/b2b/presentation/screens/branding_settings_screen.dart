@@ -124,13 +124,13 @@ class _BrandingSettingsScreenState
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  primaryColor.withOpacity(0.15),
-                  secondaryColor.withOpacity(0.08),
+                  primaryColor.withValues(alpha: 0.15),
+                  secondaryColor.withValues(alpha: 0.08),
                 ],
               ),
               borderRadius:
                   BorderRadius.circular(AppDimensions.radiusCard),
-              border: Border.all(color: primaryColor.withOpacity(0.3)),
+              border: Border.all(color: primaryColor.withValues(alpha: 0.3)),
             ),
             child: Column(
               children: [
@@ -260,7 +260,7 @@ class _BrandingSettingsScreenState
                     boxShadow: selected
                         ? [
                             BoxShadow(
-                              color: _hexToColor(hex).withOpacity(0.4),
+                              color: _hexToColor(hex).withValues(alpha: 0.4),
                               blurRadius: 8,
                             )
                           ]
@@ -337,7 +337,7 @@ class _BrandingSettingsScreenState
                     boxShadow: selected
                         ? [
                             BoxShadow(
-                              color: _hexToColor(hex).withOpacity(0.4),
+                              color: _hexToColor(hex).withValues(alpha: 0.4),
                               blurRadius: 8,
                             )
                           ]

@@ -79,14 +79,14 @@ class _SettingsBodyState extends ConsumerState<_SettingsBody> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppColors.accent.withOpacity(0.12),
-                  AppColors.accentSecondary.withOpacity(0.06),
+                  AppColors.accent.withValues(alpha: 0.12),
+                  AppColors.accentSecondary.withValues(alpha: 0.06),
                 ],
               ),
               borderRadius:
                   BorderRadius.circular(AppDimensions.radiusCard),
               border:
-                  Border.all(color: AppColors.accent.withOpacity(0.2)),
+                  Border.all(color: AppColors.accent.withValues(alpha: 0.2)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -370,10 +370,10 @@ class _SettingsBodyState extends ConsumerState<_SettingsBody> {
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLG),
             decoration: BoxDecoration(
-              color: AppColors.error.withOpacity(0.05),
+              color: AppColors.error.withValues(alpha: 0.05),
               borderRadius:
                   BorderRadius.circular(AppDimensions.radiusCard),
-              border: Border.all(color: AppColors.error.withOpacity(0.3)),
+              border: Border.all(color: AppColors.error.withValues(alpha: 0.3)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -631,7 +631,7 @@ class _PlanOption extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: isCurrent
-              ? AppColors.accent.withOpacity(0.1)
+              ? AppColors.accent.withValues(alpha: 0.1)
               : AppColors.bgTertiary,
           borderRadius:
               BorderRadius.circular(AppDimensions.radiusButton),

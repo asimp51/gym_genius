@@ -163,7 +163,7 @@ class ProgressRepository {
       for (final exercise in workout.exercises) {
         final volume = exercise.sets
             .where((s) => s.isCompleted && !s.isWarmup)
-            .fold<double>(0, (sum, s) => sum + (s.weight ?? 0) * (s.reps ?? 0));
+            .fold<double>(0, (sum, s) => sum + s.weight * s.reps);
 
         final key = exercise.exerciseName;
         distribution[key] = (distribution[key] ?? 0) + volume;

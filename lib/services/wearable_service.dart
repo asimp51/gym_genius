@@ -18,15 +18,13 @@ class WearableService {
   // ---------------------------------------------------------------------------
 
   bool _isConnected = false;
-  bool _autoSync = true;
+  bool autoSync = true;
   HealthSummary? _cachedSummary;
   StreamSubscription<int>? _heartRateSub;
   final _heartRateController = StreamController<int>.broadcast();
   final List<int> _workoutHeartRateSamples = [];
 
   bool get isConnected => _isConnected;
-  bool get autoSync => _autoSync;
-  set autoSync(bool value) => _autoSync = value;
   HealthSummary? get cachedSummary => _cachedSummary;
   DateTime? get lastSyncTime => _healthRepo.lastSyncTime;
 
@@ -126,7 +124,7 @@ class WearableService {
   /// Save a completed workout to the health platform and return the
   /// heart rate samples collected during the session.
   Future<List<int>> saveWorkoutAndFinish(WorkoutHealthData data) async {
-    if (_isConnected && _autoSync) {
+    if (_isConnected && autoSync) {
       // Enrich with heart rate data collected during the workout.
       final enrichedData = WorkoutHealthData(
         workoutName: data.workoutName,

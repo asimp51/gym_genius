@@ -457,8 +457,8 @@ class _MemberGrowthChart extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  AppColors.success.withOpacity(0.3),
-                  AppColors.success.withOpacity(0.0),
+                  AppColors.success.withValues(alpha: 0.3),
+                  AppColors.success.withValues(alpha: 0.0),
                 ],
               ),
             ),
@@ -682,7 +682,7 @@ class _ActivityHeatmap extends StatelessWidget {
                               color: intensity == 0
                                   ? AppColors.bgTertiary
                                   : AppColors.accent
-                                      .withOpacity(0.2 + intensity * 0.8),
+                                      .withValues(alpha: 0.2 + intensity * 0.8),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Center(
@@ -721,7 +721,7 @@ class _ActivityHeatmap extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: i == 0
                         ? AppColors.bgTertiary
-                        : AppColors.accent.withOpacity(opacity),
+                        : AppColors.accent.withValues(alpha: opacity),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 );
