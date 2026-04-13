@@ -7,7 +7,6 @@ import '../../../../config/theme/app_dimensions.dart';
 import '../providers/active_workout_provider.dart';
 import '../../../exercises/presentation/providers/exercise_provider.dart';
 import '../../../wearables/presentation/widgets/heart_rate_widget.dart';
-import '../../../wearables/presentation/providers/wearable_providers.dart';
 
 class ActiveWorkoutScreen extends ConsumerStatefulWidget {
   const ActiveWorkoutScreen({super.key});

@@ -20,7 +20,7 @@ class ActiveWorkoutNotifier extends StateNotifier<ActiveWorkoutState> {
       : super(ActiveWorkoutState.empty());
 
   bool get isActive => state.isActive;
-  bool get hasRestTimer => state.restTimer != null && state.restTimer!.isRunning;
+  bool get hasRestTimer => state.restTimer.isRunning;
 
   // --- Start Workout ---
 
@@ -233,11 +233,11 @@ class ActiveWorkoutNotifier extends StateNotifier<ActiveWorkoutState> {
       if (remaining <= 0) {
         timer.cancel();
         state = state.copyWith(
-          restTimer: state.restTimer?.copyWith(remainingSeconds: 0, isRunning: false),
+          restTimer: state.restTimer.copyWith(remainingSeconds: 0, isRunning: false),
         );
       } else {
         state = state.copyWith(
-          restTimer: state.restTimer?.copyWith(remainingSeconds: remaining),
+          restTimer: state.restTimer.copyWith(remainingSeconds: remaining),
         );
       }
     });
@@ -246,7 +246,7 @@ class ActiveWorkoutNotifier extends StateNotifier<ActiveWorkoutState> {
   void skipRestTimer() {
     _restTimer?.cancel();
     state = state.copyWith(
-      restTimer: state.restTimer?.copyWith(remainingSeconds: 0, isRunning: false),
+      restTimer: state.restTimer.copyWith(remainingSeconds: 0, isRunning: false),
     );
   }
 

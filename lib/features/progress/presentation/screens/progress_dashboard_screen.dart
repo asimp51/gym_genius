@@ -8,7 +8,6 @@ import '../../../../config/theme/app_dimensions.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/section_header.dart';
 import '../providers/progress_providers.dart';
-import '../../../workouts/presentation/providers/workout_providers.dart';
 import '../../../../core/widgets/ad_banner_widget.dart';
 import '../../../../services/ad_service.dart';
 

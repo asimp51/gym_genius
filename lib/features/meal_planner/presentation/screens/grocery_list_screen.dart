@@ -6,7 +6,6 @@ import 'package:gym_genius/config/theme/app_colors.dart';
 import 'package:gym_genius/config/theme/app_typography.dart';
 import 'package:gym_genius/config/theme/app_dimensions.dart';
 import 'package:gym_genius/core/widgets/app_button.dart';
-import 'package:gym_genius/core/widgets/app_card.dart';
 import 'package:gym_genius/features/meal_planner/domain/grocery_list_model.dart';
 import 'package:gym_genius/features/meal_planner/presentation/providers/grocery_providers.dart';
 

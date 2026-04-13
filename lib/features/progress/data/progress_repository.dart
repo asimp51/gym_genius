@@ -131,8 +131,8 @@ class ProgressRepository {
         if (exercise.exerciseId == exerciseId) {
           double best1RM = 0;
           for (final set in exercise.sets) {
-            if (set.isCompleted && !set.isWarmup && set.weight != null && set.reps != null) {
-              final est = calculate1RM(set.weight!, set.reps!);
+            if (set.isCompleted && !set.isWarmup) {
+              final est = calculate1RM(set.weight, set.reps);
               if (est > best1RM) best1RM = est;
             }
           }

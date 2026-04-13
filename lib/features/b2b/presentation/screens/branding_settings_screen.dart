@@ -422,7 +422,7 @@ class _BrandingSettingsScreenState
                   value: _showPoweredBy,
                   onChanged: (val) =>
                       setState(() => _showPoweredBy = val),
-                  activeColor: AppColors.accent,
+                  activeThumbColor: AppColors.accent,
                 ),
               ],
             ),

@@ -1,5 +1,6 @@
 /// Gamification domain models.
 /// Badges, XP events, and level data.
+library;
 
 class Badge {
   final String id;

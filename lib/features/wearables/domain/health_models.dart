@@ -2,6 +2,7 @@
 ///
 /// These models represent health and fitness data read from or written to
 /// Apple HealthKit (iOS) and Health Connect (Android).
+library;
 
 enum HeartRateZoneType {
   rest,

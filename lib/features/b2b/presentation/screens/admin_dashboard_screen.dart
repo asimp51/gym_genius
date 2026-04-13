@@ -6,7 +6,6 @@ import '../../../../config/theme/app_typography.dart';
 import '../../../../config/theme/app_dimensions.dart';
 import '../../domain/b2b_models.dart';
 import '../providers/b2b_providers.dart';
-import '../../data/b2b_repository.dart';
 
 class AdminDashboardScreen extends ConsumerWidget {
   const AdminDashboardScreen({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../config/theme/app_colors.dart';
-import '../../config/theme/app_typography.dart';
 import '../../config/theme/app_dimensions.dart';
 
 extension ContextExtensions on BuildContext {

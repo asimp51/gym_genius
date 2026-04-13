@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data/health_repository.dart';
 import '../../data/watch_communication_service.dart';
 import '../../domain/health_models.dart';
 import '../../../../services/wearable_service.dart';

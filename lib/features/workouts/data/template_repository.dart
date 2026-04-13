@@ -29,7 +29,7 @@ class TemplateRepository {
     final created = template.copyWith(
       id: 'template_${_idCounter++}',
       createdAt: DateTime.now(),
-    ) as WorkoutTemplateModel;
+    );
     _templates.add(created);
     return created;
   }
@@ -38,7 +38,7 @@ class TemplateRepository {
   WorkoutTemplateModel? updateTemplate(WorkoutTemplateModel template) {
     final index = _templates.indexWhere((t) => t.id == template.id);
     if (index == -1) return null;
-    final updated = template.copyWith(updatedAt: DateTime.now()) as WorkoutTemplateModel;
+    final updated = template.copyWith(updatedAt: DateTime.now());
     _templates[index] = updated;
     return updated;
   }

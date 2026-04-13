@@ -14,7 +14,7 @@ class WorkoutRepository {
   /// Saves a completed workout and returns its assigned ID.
   String saveWorkout(WorkoutModel workout) {
     final id = 'workout_${_idCounter++}';
-    final saved = workout.copyWith(id: id) as WorkoutModel;
+    final saved = workout.copyWith(id: id);
     _workouts.add(saved);
     return id;
   }

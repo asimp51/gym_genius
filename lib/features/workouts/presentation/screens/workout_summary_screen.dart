@@ -55,7 +55,7 @@ class WorkoutSummaryScreen extends ConsumerWidget {
     final durationM = workout.durationMinutes % 60;
     final durationStr = durationH > 0
         ? '${durationH}h ${durationM.toString().padLeft(2, '0')}m'
-        : '${durationM}:00';
+        : '$durationM:00';
 
     return Scaffold(
       appBar: AppBar(
